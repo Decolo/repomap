@@ -1,10 +1,15 @@
 {
-  "name": "lang-parser",
+  "name": "repomap-cli",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Repository graph indexer and context retriever for code review",
+  "main": "dist/index.js",
+  "bin": {
+    "repomap": "dist/cli.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -p tsconfig.json",
+    "repomap": "node dist/cli.js",
+    "test": "pnpm run build && node --test tests/**/*.test.cjs"
   },
   "keywords": [],
   "author": "",
@@ -13,13 +18,19 @@
     "tree-sitter": "^0.22.4",
     "tree-sitter-python": "^0.23.6",
     "tree-sitter-javascript": "^0.23.1",
+    "tree-sitter-typescript": "^0.23.2",
     "typescript": "^5.4.5",
     "glob": "^11.0.1",
+    "cytoscape": "^3.30.2",
     "graphology": "^0.26.0",
     "graphology-metrics": "^2.3.1"
   },
   "devDependencies": {
     "@types/node": "20.x"
   },
-  "packageManager": "pnpm@7.30.0+sha512.e9251dad6499e2abd0e2e05583bb269da6d528e16b4fb0e04b3d8d7d5886e789d18a2e0e0c1dfde6a987a6b062bf95817650bf8d96019fdf5f49f9b320c23759"
+  "engines": {
+    "node": ">=20 <23",
+    "pnpm": ">=10 <11"
+  },
+  "packageManager": "pnpm@10.15.0"
 }
